@@ -27,7 +27,7 @@ try:
 				changeTimes[i] = now()
 				changed[i] = True
 				state[i] = r
-			elif r == state[i] and changed[i] and now() - changeTimes[i] > datetime.timedelta(seconds=2):
+			elif r == state[i] and changed[i] and now() - changeTimes[i] > datetime.timedelta(seconds=0.5):
 				sendUpdate(i, state[i])
 				changed[i] = False
 				changeTimes[i] = now()
