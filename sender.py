@@ -14,7 +14,7 @@ def sendUpdate(stallNum, newState):
 
 try:
 	k = k8055(0)
-	numstalls = 2
+	numstalls = 3
 	changeTimes = [now() for i in range(numstalls)]
 	changed = [False for i in range(numstalls)]
 	state = [k.ReadDigitalChannel(i + 1) for i in range(numstalls)]
@@ -27,7 +27,7 @@ try:
 				changeTimes[i] = now()
 				changed[i] = True
 				state[i] = r
-			elif r == state[i] and changed[i] and now() - changeTimes[i] > datetime.timedelta(seconds=0.5):
+			elif r == state[i] and changed[i] and now() - changeTimes[i] > datetime.timedelta(seconds=3):
 				sendUpdate(i, state[i])
 				changed[i] = False
 				changeTimes[i] = now()
